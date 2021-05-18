@@ -1,6 +1,6 @@
 package cmd
 import (
-
+	"github.com/siriuswatch/myshawdowsockets"
 	"golang.org/x/net/proxy"
 	"io"
 	"log"
@@ -62,12 +62,12 @@ func runEchoServer() {
 }
 
 func runLightsocksProxyServer() {
-	password := RandPassword()
-	serverS, err := NewLsLocal(password, LightSocksProxyLocalAddr, LightSocksProxyServerAddr)
+	password := myshawdowsockets.RandPassword()
+	serverS, err := myshawdowsockets.NewLsLocal(password, LightSocksProxyLocalAddr, LightSocksProxyServerAddr)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	localS, err := NewLsServer(password, LightSocksProxyServerAddr)
+	localS, err := myshawdowsockets.NewLsServer(password, LightSocksProxyServerAddr)
 	if err != nil {
 		log.Fatalln(err)
 	}

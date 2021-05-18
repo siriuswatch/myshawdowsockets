@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/phayes/freeport"
+	"github.com/siriuswatch/myshawdowsockets"
+	"github.com/siriuswatch/myshawdowsockets/cmd"
 	"log"
 	"net"
 	"os"
 	"strconv"
-
-	"github.com/phayes/freeport"
 )
 
 var version = "master"
@@ -29,22 +30,22 @@ func main() {
 	config := &cmd.Config{
 		ListenAddr: fmt.Sprintf(":%d", port),
 		// 密码随机生成
-		Password: lightsocks.RandPassword(),
+		Password: myshawdowsockets.RandPassword(),
 	}
 	config.ReadConfig()
 	config.SaveConfig()
 
 	// 启动 server 端并监听
-	lsServer, err := lightsocks.NewLsServer(config.Password, config.ListenAddr)
+	lsServer, err := myshawdowsockets.NewLsServer(config.Password, config.ListenAddr)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	log.Fatalln(lsServer.Listen(func(listenAddr net.Addr) {
 		log.Println(fmt.Sprintf(`
-lightsocks-server:%s 启动成功，配置如下：
-服务监听地址：
+myss-server is working: %s The config is:
+Listening port is:
 %s
-密码：
+Your password is:
 %s`, version, listenAddr, config.Password))
 	}))
 }
