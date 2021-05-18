@@ -24,7 +24,7 @@ func NewLsServer(password string, listenAddr string) (*LsServer, error) {
 		return nil, err
 	}
 	return &LsServer{
-		Cipher:     newCipher(bsPassword),
+		Cipher:     NewCipher(bsPassword),
 		ListenAddr: structListenAddr,
 	}, nil
 

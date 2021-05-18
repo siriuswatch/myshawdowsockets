@@ -30,7 +30,7 @@ func NewLsLocal(password string, listenAddr, remoteAddr string) (*LsLocal, error
 		return nil, err
 	}
 	return &LsLocal{
-		Cipher:     newCipher(bsPassword),
+		Cipher:     NewCipher(bsPassword),
 		ListenAddr: structListenAddr,
 		RemoteAddr: structRemoteAddr,
 	}, nil

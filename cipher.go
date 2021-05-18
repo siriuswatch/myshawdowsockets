@@ -6,19 +6,19 @@ type cipher struct {
 	decodePassword *password
 }
 
-func (cipher *cipher) encode(bs []byte) {
+func (cipher *cipher) Encode(bs []byte) {
 	for i, v := range bs {
 		bs[i] = cipher.encodePassword[v]
 	}
 }
 
-func (cipher *cipher) decode(bs []byte) {
+func (cipher *cipher) Decode(bs []byte) {
 	for i, v := range bs {
 		bs[i] = cipher.decodePassword[v]
 	}
 }
 
-func newCipher(encodePassword *password) *cipher {
+func NewCipher(encodePassword *password) *cipher {
 	decodePassword := &password{}
 	for i, v := range encodePassword {
 		encodePassword[i] = v

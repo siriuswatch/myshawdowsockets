@@ -22,13 +22,13 @@ func (secureSocket *SecureTCPConn) DecodeRead(bs []byte) (n int, err error) {
 	if err != nil {
 		return
 	}
-	secureSocket.Cipher.decode(bs[:n])
+	secureSocket.Cipher.Decode(bs[:n])
 	return
 }
 
 // 把放在bs里的数据加密后立即全部写入输出流
 func (secureSocket *SecureTCPConn) EncodeWrite(bs []byte) (int, error) {
-	secureSocket.Cipher.encode(bs)
+	secureSocket.Cipher.Encode(bs)
 	return secureSocket.Write(bs)
 }
 
