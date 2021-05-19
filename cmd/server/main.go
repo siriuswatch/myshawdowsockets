@@ -42,10 +42,11 @@ func main() {
 	}
 	log.Fatalln(lsServer.Listen(func(listenAddr net.Addr) {
 		log.Println(fmt.Sprintf(`
-myss-server is working: %s The config is:
-Listening port is:
-%s
-Your password is:
-%s`, version, listenAddr, config.Password))
+ss-server is working now: %s 
+The config is:
+	Listening Port:
+	%s
+	Password:
+	%s`, version, listenAddr, config.Password))
 	}))
 }
