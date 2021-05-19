@@ -31,12 +31,13 @@ func main() {
 	}
 	log.Fatalln(lsLocal.Listen(func(listenAddr net.Addr) {
 		log.Println(fmt.Sprintf(`
-ss-local is working now: %s  The config is:
-The local listening prot is:
-%s
-The remote address is:
-%s
-The password is:
-%s`, version, listenAddr, config.RemoteAddr, config.Password))
+ss-local is working now: %s  
+The config is:
+	Local Listening Port:
+	%s
+	Remote Address:
+	%s
+	Password:
+	%s`, version, listenAddr, config.RemoteAddr, config.Password))
 	}))
 }
